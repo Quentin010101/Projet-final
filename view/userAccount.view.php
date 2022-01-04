@@ -57,8 +57,28 @@
         </div>
         <div>
             <label for="smoker">Smoker</label>
-            <input type="email" value="<?php echo htmlspecialchars($preferences['smoker']); ?>" name="smoker">
+            <input type="text" value="<?php echo htmlspecialchars($preferences['smoker']); ?>" name="smoker">
             <input type="submit" value="modify" name="modifyPreference">
         </div>
     </form>
     
+    <h2>Journey</h2>
+    <form action="../index.php?contr=journey&action=set" method="POST" >
+        <div>
+            <label for="avatar">Starting Place</label>
+            <input type="text" value="" name="startingPlace">
+        </div>
+        <div>
+            <label for="music">Ending Place</label>
+            <input type="text" value="" name="endingPlace" >
+        </div>
+        <div>
+            <label for="talk">Starting Time</label>
+            <input type="text" value="" name="talk">
+        </div>
+        <input type="submit" value="modify" name="setJourney">
+    </form>
+
+    <div class="journey">
+        
+    </div>

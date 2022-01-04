@@ -111,7 +111,7 @@ class SignUp extends Database
 
             $query = 'INSERT INTO user(person_id) VALUES(?)';
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute(array($personId));
+            $t = $stmt->execute(array($personId));
 
             $this->erreurUserExist = false;
         }

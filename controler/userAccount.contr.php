@@ -8,7 +8,7 @@ class User
     public function show(){
         if(isset($_SESSION['person_id']) AND !empty($_SESSION['person_id'])){
             $user = new \Model\User();
-            $journey = new Ride();
+            $journey = new \Model\Ride();
             // show user preferences
             $preferences = $user->findPreference($_SESSION['person_id']);
             // show user personnal information
@@ -40,9 +40,4 @@ class User
         Redirection::redirect('./index.php?contr=user&action=show');
     }
 
-    public function setRide(){
-        // if(isset()){
-
-        // }
-    }
 }

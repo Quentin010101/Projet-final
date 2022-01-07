@@ -4,81 +4,86 @@
 
 
 
-    <h2>Personnal Information</h2>
-    <form action="../index.php?contr=user&action=update" method="POST" >
-        <div>
-            <label for="pseudo">Pseudo</label>
-            <input type="text" value="<?php echo htmlspecialchars($personals['pseudo']); ?>" name="pseudo" >
-            <input type="submit" value="modify" name="modifyPersonnal">
-        </div>
-        <div>
-            <label for="name">Name</label>
-            <input type="text" value="<?php echo htmlspecialchars($personals['name']); ?>" name="name">
-            <input type="submit" value="modify" name="modifyPersonnal">
-        </div>
-        <div>
-            <label for="surname">Surname</label>
-            <input type="text" value="<?php echo htmlspecialchars($personals['surname']); ?>" name="surname">
-            <input type="submit" value="modify" name="modifyPersonnal">
-        </div>
-        <div>
-            <label for="email">Email</label>
-            <input type="email" value="<?php echo htmlspecialchars($personals['email']); ?>" name="email">
-            <input type="submit" value="modify" name="modifyPersonnal">
-        </div>
-        <div>
-            <label for="phoneNumber">Phone number</label>
-            <input type="text" value="<?php echo htmlspecialchars($personals['phoneNumber']); ?>" name="phoneNumber">
-            <input type="submit" value="modify" name="modifyPersonnal">
-        </div>
-    </form>
-
-    <h2>Preferences</h2>
-    <form action="../index.php?contr=user&action=update" method="POST" >
-        <div>
-            <label for="avatar">Your Avatar</label>
-            <input type="text" value="<?php echo htmlspecialchars($preferences['avatar']); ?>" name="avatar">
-            <input type="submit" value="modify" name="modifyPreference">
-        </div>
-        <div>
-            <label for="music">Music</label>
-            <input type="text" value="<?php echo htmlspecialchars($preferences['music']); ?>" name="music" >
-            <input type="submit" value="modify" name="modifyPreference">
-        </div>
-        <div>
-            <label for="talk">Talk</label>
-            <input type="text" value="<?php echo htmlspecialchars($preferences['talk']); ?>" name="talk">
-            <input type="submit" value="modify" name="modifyPreference">
-        </div>
-        <div>
-            <label for="pet">Pet</label>
-            <input type="text" value="<?php echo htmlspecialchars($preferences['pet']); ?>" name="pet">
-            <input type="submit" value="modify" name="modifyPreference">
-        </div>
-        <div>
-            <label for="smoker">Smoker</label>
-            <input type="text" value="<?php echo htmlspecialchars($preferences['smoker']); ?>" name="smoker">
-            <input type="submit" value="modify" name="modifyPreference">
-        </div>
-    </form>
-    
-    <h2>Journey</h2>
-    <form action="../index.php?contr=journey&action=set" method="POST" >
-        <div>
-            <label for="avatar">Starting Place</label>
-            <input type="text" value="" name="startingPlace">
-        </div>
-        <div>
-            <label for="music">Ending Place</label>
-            <input type="text" value="" name="endingPlace" >
-        </div>
-        <div>
-            <label for="talk">Starting Time</label>
-            <input type="text" value="" name="talk">
-        </div>
-        <input type="submit" value="modify" name="setJourney">
-    </form>
-
-    <div class="journey">
-        
+<h2>Personnal Information</h2>
+<form action="../index.php?contr=user&action=update" method="POST">
+    <div>
+        <label for="pseudo">Pseudo</label>
+        <input type="text" value="<?php echo htmlspecialchars($personals['pseudo']); ?>" name="pseudo">
+        <input type="submit" value="modify" name="modifyPersonnal">
     </div>
+    <div>
+        <label for="name">Name</label>
+        <input type="text" value="<?php echo htmlspecialchars($personals['name']); ?>" name="name">
+        <input type="submit" value="modify" name="modifyPersonnal">
+    </div>
+    <div>
+        <label for="surname">Surname</label>
+        <input type="text" value="<?php echo htmlspecialchars($personals['surname']); ?>" name="surname">
+        <input type="submit" value="modify" name="modifyPersonnal">
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" value="<?php echo htmlspecialchars($personals['email']); ?>" name="email">
+        <input type="submit" value="modify" name="modifyPersonnal">
+    </div>
+    <div>
+        <label for="phoneNumber">Phone number</label>
+        <input type="text" value="<?php echo htmlspecialchars($personals['phoneNumber']); ?>" name="phoneNumber">
+        <input type="submit" value="modify" name="modifyPersonnal">
+    </div>
+</form>
+
+<h2>Preferences</h2>
+<form action="../index.php?contr=user&action=update" method="POST">
+    <div>
+        <label for="avatar">Your Avatar</label>
+        <input type="text" value="<?php echo htmlspecialchars($preferences['avatar']); ?>" name="avatar">
+        <input type="submit" value="modify" name="modifyPreference">
+    </div>
+    <div>
+        <label for="music">Music</label>
+        <input type="text" value="<?php echo htmlspecialchars($preferences['music']); ?>" name="music">
+        <input type="submit" value="modify" name="modifyPreference">
+    </div>
+    <div>
+        <label for="talk">Talk</label>
+        <input type="text" value="<?php echo htmlspecialchars($preferences['talk']); ?>" name="talk">
+        <input type="submit" value="modify" name="modifyPreference">
+    </div>
+    <div>
+        <label for="pet">Pet</label>
+        <input type="text" value="<?php echo htmlspecialchars($preferences['pet']); ?>" name="pet">
+        <input type="submit" value="modify" name="modifyPreference">
+    </div>
+    <div>
+        <label for="smoker">Smoker</label>
+        <input type="text" value="<?php echo htmlspecialchars($preferences['smoker']); ?>" name="smoker">
+        <input type="submit" value="modify" name="modifyPreference">
+    </div>
+</form>
+
+<h2>Ride</h2>
+<div class="journey">
+    <?php
+    foreach ($journeys as $journey) :
+    ?>
+        <h3>Ride to come</h3>
+        <?php
+        if ($journey['statusRide'] = 'in progress') :
+        ?>
+            <p>Date : <?php echo htmlspecialchars($journey['dateRide']) ?></p>
+            <p>Departure : <?php echo htmlspecialchars($journey['startingPlace']) ?> at : <?php echo htmlspecialchars($journey['startingTime']) ?></p>
+            <p>Arrival : <?php echo htmlspecialchars($journey['endingPlace']) ?> at :</p>
+            <p>Number of seat : <?php echo htmlspecialchars($journey['nbSeat']) ?></p>
+    <?php
+        endif;
+    endforeach;
+    ?>
+
+
+
+
+</div>
+
+
+

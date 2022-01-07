@@ -1,0 +1,26 @@
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--col-p-1);
+    min-height: 65px;
+}
+header nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+}
+header ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 50px; 
+}
+header li{
+    margin: 0 10px;
+}
+header a{
+    font-family: var(--font1);
+    color: var(--col-w-1)
+} 

@@ -32,4 +32,9 @@ class Sign
         }
         Redirection::redirect('index.php');
     }
+
+    public function disconect(){
+        session_destroy();
+        Redirection::redirect('index.php');
+    }
 }

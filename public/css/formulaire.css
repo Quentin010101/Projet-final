@@ -1,0 +1,55 @@
+form{
+    padding: 30px;
+    font-family: var(--font2);
+    font-weight: 500;
+    border: solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form input{
+    margin: 10px;
+}
+
+input[type='submit']{
+    padding: 10px 20px;
+    background-color: var(--col-p-1);
+    border: solid 2px var(--col-p-1);
+    color: var(--col-w-1);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.5s; 
+}
+input[type='submit']:hover{
+    background-color: var(--col-w-1);
+    color: var(--col-p-1);
+    transition: all 0.5s; 
+}
+input[type='text'], input[type='email'], input[type='password']{
+    border: none;
+    background-color: var(--col-b-9);
+    padding: 0 10px;
+    border-radius: 5px;
+    height: 40px;
+    font-family: var(--font2);
+    width:  500px;
+    color: var(--col-b-3);
+}
+input[type='text']:focus, input[type='email']:focus, input[type='password']:focus{
+    outline: none;
+}
+input[type='date'], input[type='time']{
+    border: none;
+    font-family: var(--font2);
+    font-weight: 500;
+    cursor: pointer;
+    background-color: var(--col-s-1);
+    padding: 10px 10px 10px 20px;
+    border-radius: 10px;
+}
+input[type='date']:focus, input[type='time']:focus{
+    outline: none;
+}
+.menu{
+    transition: all 1s;
+}

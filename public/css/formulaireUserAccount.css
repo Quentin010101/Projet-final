@@ -1,0 +1,87 @@
+form{
+    max-width: 800px;
+    margin: 20px;
+    font-family: var(--font1);
+}
+form > div{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 10px;
+}
+input:focus{
+    outline: none;
+}
+label{
+    align-self: center;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--col-b-3)
+}
+input[type='text'], input[type='email'], select, input[type='radio']{
+    height: 40px;
+    padding-left: 20px;
+    background-color: var(--col-s-10);
+    border: none;
+    border-radius: 5px;
+    color: var(--col-b-4);
+    margin: 10px 0;
+    font-weight: 600;
+}
+input[type='submit']{
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--col-p-3);
+    color: var(--col-w-1);
+    border-radius: 10px;
+    cursor: pointer;
+    height: 40px;
+    max-width: 100px;
+    align-self: center;
+}
+input[type='file']{
+    background: var(--col-s-10);
+    height: 100px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+}
+.file-container{
+    position:relative;
+}
+.file-div{
+    position: absolute;
+    top: 0;
+    left:0;
+    border: var(--col-s-5) 2px dashed;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.file-div p{
+    color: var(--col-b-4);
+}
+.radio-div{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.radio-div >div{
+    display: flex;
+    align-items: center;
+}
+.radio-div label{
+    border: solid 2px var(--col-s-10);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+.radio-div input{
+    opacity: 0;
+}
+.radio-div input:checked ~ label{
+    background-color: var(--col-s-10);
+}

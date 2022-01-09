@@ -35,6 +35,8 @@ class SignIn extends Database
     private function checkSignIn(){
 
         $request = $this->getUser();
+
+
         if(!empty($request)){
             if(password_verify($this->password, $request['password'])){
                 $_SESSION['person_id'] = $request['person_id'];
@@ -43,6 +45,10 @@ class SignIn extends Database
                 $_SESSION['surname'] = $request['surname'];
                 $_SESSION['email'] = $request['email'];
                 $_SESSION['date'] = $request['date'];
+
+                $preferences = new \Model\User();
+                $preference = $preferences->findPreference($_SESSION['person_id']);
+                $_SESSION['light'] = $preference['light'];
             }
             else{
                 $this->erreur = 'mot de passe invalid';

@@ -16,10 +16,19 @@ class User extends \Database
 
         return $request;
     }
+    public function findPreferenceAvatar($person_id){
+
+        $query = 'SELECT avatar FROM user WHERE person_id = ?';
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute(array($person_id));
+        $request = $stmt->fetch();
+
+        return $request;
+    }
 
     public function findPersonnalInformation($person_id){
 
-        $query = 'SELECT name, surname, email, pseudo, phoneNumber FROM person WHERE person_id = ?';
+        $query = 'SELECT name, surname, email, pseudo, phoneNumber, date FROM person WHERE person_id = ?';
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($person_id));
         $request = $stmt->fetch();
@@ -30,16 +39,36 @@ class User extends \Database
     // Update
     public function updatePersonnalInformation($pseudo, $name, $surname, $email, $phoneNumber, $person_id){
 
-
         $query = 'UPDATE person SET pseudo = ? , name = ? , surname = ? , email = ? , phoneNumber = ? WHERE person_id = ?';
         $stmt = $this->connect()->prepare($query);
-        $stmt->execute(array($pseudo, $name, $surname, $email, $phoneNumber, $person_id));
+        $msg = $stmt->execute(array($pseudo, $name, $surname, $email, $phoneNumber, $person_id));
+
+        if($msg == true):
+            return 's1';
+        else:
+            return 'e3';
+        endif;    
     }
 
-    public function updatePreference($music, $talk, $smoker, $pet, $avatar, $person_id){
-        $query = 'UPDATE user SET music = ? , talk = ? , smoker = ? , pet = ? , avatar = ? WHERE person_id = ?';
+    public function updatePreference($light, $music, $talk, $smoker, $pet, $person_id){
+        
+        $query = 'UPDATE user SET light = ? , music = ? , talk = ? , smoker = ? , pet = ?  WHERE person_id = ?';
         $stmt = $this->connect()->prepare($query);
-        $stmt->execute(array($music, $talk, $smoker, $pet, $avatar, $person_id));
+        $msg = $stmt->execute(array($light, $music, $talk, $smoker, $pet, $person_id));
+
+        if($msg == true):
+            return 's2';
+        else:
+            return 'e4';
+        endif;   
+
+    }
+    public function updatePreferenceAvatar($avatar, $person_id){
+
+        $query = 'UPDATE user SET avatar = ?  WHERE person_id = ?';
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute(array($avatar, $person_id));
+
     }
 
 }

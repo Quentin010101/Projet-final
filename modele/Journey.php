@@ -8,7 +8,7 @@ class Ride extends \Database
 {
     public function findRideByPersonId($person_id){
 
-        $query = 'SELECT * FROM journey WHERE person_id = ?';
+        $query = 'SELECT * FROM journey WHERE person_id = ? ORDER BY dateRide';
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($person_id));
 
@@ -19,7 +19,7 @@ class Ride extends \Database
     }
     public function findRideByPlaceDate($startingPlace, $endingPlace, $dateRide){
 
-        $query = 'SELECT journey.*, person.pseudo FROM journey INNER JOIN person ON journey.person_id = person.person_id WHERE journey.startingPlace = ? AND journey.endingPlace = ? AND journey.dateRide = ? ORDER BY startingTime';
+        $query = 'SELECT journey.*, person.pseudo, person.person_id, user.* FROM person INNER JOIN user ON person.person_id = user.person_id INNER JOIN journey ON person.person_id = journey.person_id  WHERE journey.startingPlace = ? AND journey.endingPlace = ? AND journey.dateRide = ? ORDER BY startingTime';
         $stmt = $this->connect()->prepare($query);
 
         $t = $stmt->execute(array($startingPlace, $endingPlace, $dateRide));
@@ -37,7 +37,11 @@ class Ride extends \Database
 
     }
 
-    public function cancelRide(){
+    public function cancelRide($journey_id){
 
+        $query = 'DELETE FROM journey WHERE journey_id = ?';
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute(array($journey_id));
+        
     }
 }

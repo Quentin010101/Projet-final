@@ -1,16 +1,24 @@
 const erreur = document.querySelector('.erreur')
 const sucess = document.querySelector('.sucess')
-
+let parm
 window.addEventListener('DOMContentLoaded', function(){
-    setTimeout(()=>{
-        dissipation()
+    if(erreur || sucess){
+        if(erreur){
+            parm = erreur
+        }
+        else if(sucess){
+            parm = sucess
+        }
         setTimeout(()=>{
-            erreur.style.display = 'none'
-        }, 1000)
-    }, 3000)
+            dissipation()
+            setTimeout(()=>{
+                parm.style.display = 'none'
+            }, 1000)
+        }, 3000)
+    }
 })
 
 function dissipation(){
-    erreur.style.opacity = '0'
-    erreur.style.transition = 'opacity 1s'
+    parm.style.opacity = '0'
+    parm.style.transition = 'opacity 1s'
 }

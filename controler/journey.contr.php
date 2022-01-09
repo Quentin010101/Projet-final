@@ -17,7 +17,7 @@ class Ride
                 $ride = new \Model\Ride();
                 $rides = $ride->findRideByPlaceDate($_POST['startingPlace'], $_POST['endingPlace'], $_POST['dateRide']);
                 
-                Renderer::render('searchRide', 'template', compact('rides'));
+                Renderer::render('showSearchRide', 'template', compact('rides'));
             }else {
                 $erreur = 'You need to complete all entry';
                 Renderer::render('searchRide', 'template', compact('erreur'));
@@ -48,5 +48,15 @@ class Ride
         $newTime = date('H:i', $timestamp);
 
         return $newTime;
+    }
+    public function cancelRide(){
+
+        if(isset($_SESSION['person_id']) AND !empty($_SESSION['person_id'])){
+            if(isset($_POST['rideId']) AND !empty($_POST['rideId'])){
+                $journey = new \Model\Ride();
+                $journey->cancelRide($_POST['rideId']);
+                Redirection::redirect('./index.php?contr=user&action=show');
+            }
+        }
     }
 }

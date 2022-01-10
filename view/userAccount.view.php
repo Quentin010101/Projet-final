@@ -18,15 +18,15 @@
                 <li id="list-ride" class="navIndex"><button id="button-ride" class="button-nav">
                         <ion-icon name="car"></ion-icon><span>Ride</span>
                     </button></li>
-                <hr>
+                <div class="barre"></div>
                 <li id="list-personnal"><button id="button-personnal" class="button-nav">
                         <ion-icon name="person"></ion-icon><span>Personnal Information</span>
                     </button></li>
-                <hr>
+                <div class="barre"></div>
                 <li id="list-preference"><button id="button-preference" class="button-nav">
                         <ion-icon name="color-palette"></ion-icon><span>Preference</span>
                     </button></li>
-                <hr>
+                <div class="barre"></div>
                 <li id="list-message"><button id="button-message" class="button-nav">
                         <ion-icon name="mail"></ion-icon><span>Message</span>
                     </button></li>

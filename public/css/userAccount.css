@@ -50,10 +50,10 @@ body{
     padding: 20px 0;
     margin: 0 5px 0 0;
 }
-.user-nav hr{
-    z-index: 1;
+.user-nav .barre{
+    height: 1px;
     width: 50%;
-    color: var(--col-w-1);
+    background-color: var(--col-w-1);
     margin-left: 10px; 
 }
 .user-nav ul{

@@ -28,7 +28,6 @@ class Ride extends \Database
 
         return $request;
     }
-
     public function setRide($person_id, $startingPlace, $startingPlaceLatitude, $startingPlaceLongitude, $endingPlace, $endingPlaceLatitude, $endingPlaceLongitude, $rideDistance, $rideTime, $startingTime, $endingTime, $dateRide, $nbSeat){
 
         $query = 'INSERT INTO journey(person_id, startingPlace, startingPlaceLatitude, startingPlaceLongitude, endingPlace, endingPlaceLatitude, endingPlaceLongitude, rideDistance, rideTime, startingTime, endingTime, dateRide, datePost, nbSeat) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?)';

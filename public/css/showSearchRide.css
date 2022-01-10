@@ -1,11 +1,13 @@
 .showSearch-wrapper{
+    display: flex;
+    width: 100%;
     font-family: var(--font1);
 }
 
 h2{
     background-color: var(--col-p-1);
     padding: 10px 20px;
-    margin: 5px 0 30px 0;
+    margin: 5px 5px 30px 5px;
 }
 .card{
     position: relative;
@@ -92,9 +94,10 @@ h2{
     width: 100%;
     height: 100%;
 }
-hr{
+.barre{
+    height: 2px;
     width: 50%;
-    color: var(--col-b-3);
+    background-color: var(--col-b-5);
     margin: 0 auto;
 }
 .card-en-tete{
@@ -146,3 +149,61 @@ hr{
 .iconBad ion-icon{
     color: rgb(209, 24, 24);
 }
+.nav-wrapper{
+    position:relative;
+    min-width: 400px;
+}
+.card-wrapper{
+    width: 100%;
+}
+.nav-wrapper > div{
+    position: sticky;
+    top: 50px;
+    margin-left: 50px;
+    max-height: 100vh;
+    background-color: var(--col-p-1);
+    padding: 40px 60px;
+    min-width: 300px;
+    border-radius: 10px;
+}
+.nav-wrapper > div h3{
+    color: var(--col-b-5);
+    margin: 0 0 20px 0;
+}
+.nav-wrapper > div h4{
+    color: var(--col-w-3);
+    margin: 10px 0;
+}
+.nav-wrapper .input-content{
+    height: auto;
+    height: 40px;
+}
+.input-content label{
+    padding: 5px 20px;
+    border: var(--col-s-3) solid 1px;
+    background-color: var(--col-w-3); 
+    border-radius: 10px;
+    cursor: pointer; 
+    color: var(--col-b-3);
+}
+.input-content input{
+    opacity: 0;
+}
+.input-content input:checked ~ label{
+    background-color: var(--col-s-3);
+}
+.nav-submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.nav-submit input[type='submit']{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: var(--col-w-3) 2px solid;
+    background-color: var(--col-p-3);
+    color: var(--col-w-3);
+    cursor: pointer;
+}
+

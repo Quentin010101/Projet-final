@@ -17,7 +17,13 @@ class Ride
                 $ride = new \Model\Ride();
                 $rides = $ride->findRideByPlaceDate($_POST['startingPlace'], $_POST['endingPlace'], $_POST['dateRide']);
                 
-                Renderer::render('showSearchRide', 'template', compact('rides'));
+                //search by pet or smoker :
+                $variableStockage2 = array();
+                if((isset($_POST['pet']) AND isset($_POST['smoker'])) AND (!empty($_POST['pet']) AND !empty($_POST['smoker']))):
+                    $variableStockage2 = array($_POST['smoker'], $_POST['pet']);
+                endif;
+                $variableStockage = array($_POST['startingPlace'], $_POST['endingPlace'], $_POST['dateRide']);
+                Renderer::render('showSearchRide', 'template', compact('rides', 'variableStockage', 'variableStockage2'));
             }else {
                 $erreur = 'You need to complete all entry';
                 Renderer::render('searchRide', 'template', compact('erreur'));
@@ -26,6 +32,7 @@ class Ride
             Renderer::render('searchRide', 'template');
         }
     }
+
     public function set(){
         if(isset($_SESSION['person_id']) AND !empty($_SESSION['person_id'])){
             if((isset($_POST['startingPlace']) AND isset($_POST['startingPlaceLatitude']) AND isset($_POST['startingPlaceLongitude']) AND isset($_POST['endingPlace']) AND isset($_POST['endingPlaceLatitude']) AND isset($_POST['endingPlaceLongitude']) AND isset($_POST['rideDistance']) AND isset($_POST['rideTime']) AND isset($_POST['startingTime']) AND isset($_POST['dateRide']) AND isset($_POST['nbSeat'])) AND 

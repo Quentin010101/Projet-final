@@ -10,39 +10,53 @@
                 <h3>Sort out by:</h3>
                 <div>
                     <h4>Smoker:</h4>
-                    <div class="input-content" >
-                        <input type="radio" value="sY" name="smoker" id="smokerY" <?php if(isset($variableStockage2) AND !empty($variableStockage2)): if($variableStockage2[0] == 'sY'): echo 'checked'; endif; endif; ?>>
+                    <div class="input-content">
+                        <input type="radio" value="sY" name="smoker" id="smokerY" <?php if (isset($variableStockage2) and !empty($variableStockage2)) : if ($variableStockage2[0] == 'sY') : echo 'checked';
+                                                                                        endif;
+                                                                                    endif; ?>>
                         <label for="smokerY">Smoker allowed</label>
                     </div>
-                    <div class="input-content" >
-                        <input type="radio" value="sN" name="smoker" id="smokerN" <?php if(isset($variableStockage2) AND !empty($variableStockage2)): if($variableStockage2[0] == 'sN'): echo 'checked'; endif; endif; ?>>
+                    <div class="input-content">
+                        <input type="radio" value="sN" name="smoker" id="smokerN" <?php if (isset($variableStockage2) and !empty($variableStockage2)) : if ($variableStockage2[0] == 'sN') : echo 'checked';
+                                                                                        endif;
+                                                                                    endif; ?>>
                         <label for="smokerN">Smoker not allowed</label>
                     </div>
-                    <div class="input-content" >
-                        <input type="radio" value="sAll" name="smoker" id="smokerAll"  <?php if(isset($variableStockage2) AND !empty($variableStockage2)): if($variableStockage2[0] == 'sAll'): echo 'checked'; endif; else: echo 'checked'; endif; ?>>
+                    <div class="input-content">
+                        <input type="radio" value="sAll" name="smoker" id="smokerAll" <?php if (isset($variableStockage2) and !empty($variableStockage2)) : if ($variableStockage2[0] == 'sAll') : echo 'checked';
+                                                                                            endif;
+                                                                                        else : echo 'checked';
+                                                                                        endif; ?>>
                         <label for="smokerAll">All</label>
                     </div>
                 </div>
                 <div class="barre"></div>
                 <div>
                     <h4>Pet:</h4>
-                    <div class="input-content" >
-                        <input type="radio" value="pY" name="pet" id="petY" <?php if(isset($variableStockage2) AND !empty($variableStockage2)): if($variableStockage2[1] == 'pY'): echo 'checked'; endif; endif;?>>
+                    <div class="input-content">
+                        <input type="radio" value="pY" name="pet" id="petY" <?php if (isset($variableStockage2) and !empty($variableStockage2)) : if ($variableStockage2[1] == 'pY') : echo 'checked';
+                                                                                endif;
+                                                                            endif; ?>>
                         <label for="petY">pet allowed</label>
                     </div>
-                    <div class="input-content" >
-                        <input type="radio" value="pN" name="pet" id="petN" <?php if(isset($variableStockage2) AND !empty($variableStockage2)): if($variableStockage2[1] == 'pN'): echo 'checked'; endif; endif;?>>
+                    <div class="input-content">
+                        <input type="radio" value="pN" name="pet" id="petN" <?php if (isset($variableStockage2) and !empty($variableStockage2)) : if ($variableStockage2[1] == 'pN') : echo 'checked';
+                                                                                endif;
+                                                                            endif; ?>>
                         <label for="petN">pet not allowed</label>
                     </div>
-                    <div class="input-content" >
-                        <input type="radio" value="pAll" name="pet" id="petAll"  <?php if(isset($variableStockage2) AND !empty($variableStockage2)): if($variableStockage2[1] == 'pAll'): echo 'checked'; endif; else: echo 'checked'; endif;?>>
-                        <label for="petAll">All</label>   
+                    <div class="input-content">
+                        <input type="radio" value="pAll" name="pet" id="petAll" <?php if (isset($variableStockage2) and !empty($variableStockage2)) : if ($variableStockage2[1] == 'pAll') : echo 'checked';
+                                                                                    endif;
+                                                                                else : echo 'checked';
+                                                                                endif; ?>>
+                        <label for="petAll">All</label>
                     </div>
                 </div>
                 <div class="barre"></div>
-                <input type="hidden" name="startingPlace" value="<?php echo htmlspecialchars($variableStockage[0]);?>">
-                <input type="hidden" name="endingPlace" value="<?php echo htmlspecialchars($variableStockage[1]);?>">
-                <input type="hidden" name="dateRide" value="<?php echo htmlspecialchars($variableStockage[2]);?>">
+                <input type="hidden" name="startingPlace" value="<?php echo htmlspecialchars($variableStockage[0]); ?>">
+                <input type="hidden" name="endingPlace" value="<?php echo htmlspecialchars($variableStockage[1]); ?>">
+                <input type="hidden" name="dateRide" value="<?php echo htmlspecialchars($variableStockage[2]); ?>">
                 <div class="nav-submit">
                     <input type="submit" name="search" value="Search">
                 </div>
@@ -56,17 +70,17 @@
             foreach ($rides as $ride) :
         ?>
                 <div class="card">
-                    <div class="avatar-container">
+                    <a href="<?php echo '../index.php?contr=user&action=showUser&id=' . htmlspecialchars($ride['person_id']); ?>" class="avatar-container">
                         <div>
                             <img src="<?php echo '../public/asset/avatar/' . $ride['avatar']; ?> " alt="avatar">
                         </div>
-                    </div>
+                    </a>
                     <div class="square-container">
                         <div class="square1"></div>
                         <div class="square2"></div>
                         <div class="square3"></div>
                     </div>
-                    <div class="card-content">
+                    <a class="card-content" href="<?php echo './index.php?contr=ride&action=showOneRide&id=' . htmlspecialchars($ride['journey_id']); ?>">
                         <div class="card-en-tete">
                             <h3><?php echo htmlspecialchars($ride['pseudo']); ?></h3>
                         </div>
@@ -136,7 +150,7 @@
                             endif;
                             ?>
                         </div>
-                    </div>
+                    </a>
                 </div>
         <?php
             endforeach;

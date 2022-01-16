@@ -35,7 +35,7 @@ input[type='submit']{
     border-radius: 10px;
     cursor: pointer;
     height: 40px;
-    max-width: 100px;
+    max-width: 300px;
     align-self: center;
 }
 input[type='file']{

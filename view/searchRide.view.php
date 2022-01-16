@@ -1,27 +1,44 @@
 <?php $pageTitle = 'search'; ?>
 
-<?php $contentCss = array('./public/css/formulaire.css'); ?>
+<?php $contentCss = array('./public/css/formulaire.css', './public/css/searchRide.css'); ?>
 
 
 
-    <h2>Search</h2>
-    <form action="../index.php?contr=ride&action=showSearch" method="POST" >
-        <div>
-            <label for="">Departure: </label>
-            <input type="text" name="startingPlace" >
-        </div>
-        <div>
-            <label for="">Arrival: </label>
-            <input type="text" name="endingPlace" >
-        </div>
-        <div>
-            <label for="">Date: </label>
-            <input type="date" name="dateRide" >
-        </div>
-        <div>
-            <input type="submit" value="Search" name="search">
-        </div>
-    </form>
+<div class="wrapper-form">
+        <h2>Where do you want to go?</h2>
+        <form action="../index.php?contr=ride&action=showSearch" method="POST" >
+                <div class="form-content" >          
+                    <div class="square">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="form-input">
+                        <label for="">Departure: </label>
+                        <input type="text" name="startingPlace" >
+                    </div>
+                    <div class="form-input">
+                        <label for="">Arrival: </label>
+                        <input type="text" name="endingPlace" >
+                    </div>
+                    <div class="form-input">
+                        <label for="">Date: </label>
+                        <input type="date" name="dateRide" >
+                    </div>
+                    <div class="form-input">
+                        <input type="submit" value="Search" name="search">
+                    </div>
+                </div>
+                <div class="square-out">
+                    <div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </form>
+    </div>
 
 
 

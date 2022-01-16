@@ -140,12 +140,12 @@
                     <div class="radio-div">
                         <div>
                             <input type="radio" value="dark" name="light" id="lightD" <?php if ($preferences['light'] == 'dark') : echo 'checked';
-                                                                                                endif; ?>>
+                                                                                        endif; ?>>
                             <label for="lightD">Dark mode</label>
                         </div>
                         <div>
                             <input type="radio" value="bright" name="light" id="lightB" <?php if ($preferences['light'] == 'bright') : echo 'checked';
-                                                                                                    endif; ?>>
+                                                                                        endif; ?>>
                             <label for="lightB">Bright mode</label>
                         </div>
                     </div>
@@ -174,14 +174,14 @@
                                 <div>
                                     <div>
                                         <p>Departure : <span><?php echo htmlspecialchars($journey['startingPlace']) ?></span></p>
-                                        <p>at : <span><?php echo htmlspecialchars(substr($journey['startingTime'], 0,-3)); ?></span></p>
+                                        <p>at : <span><?php echo htmlspecialchars(substr($journey['startingTime'], 0, -3)); ?></span></p>
                                     </div>
                                     <div>
                                         <p>Arrival : <span><?php echo htmlspecialchars($journey['endingPlace']) ?></span></p>
-                                        <p>at : <span><?php echo htmlspecialchars(substr($journey['endingTime'], 0,-3)); ?></span></p>
+                                        <p>at : <span><?php echo htmlspecialchars(substr($journey['endingTime'], 0, -3)); ?></span></p>
                                     </div>
                                     <div>
-                                        <p>Number of seat booked : / <span><?php echo htmlspecialchars($journey['nbSeat']) ?></span></p>
+                                        <p>Number of seat booked : <?php echo htmlspecialchars($journey['nbReservation']) ?> / <span><?php echo htmlspecialchars($journey['nbSeat']) ?></span></p>
                                     </div>
                                     <form action="../index.php?contr=ride&action=cancelRide" method="POST">
                                         <input type="hidden" name="rideId" value="<?php echo $journey['journey_id'] ?>">
@@ -200,15 +200,106 @@
                     endforeach;
                     ?>
                 </div>
-                <h3>As Passenger <ion-icon name="chevron-down-outline"></ion-icon>
+                <h3>
+                    <p>As Passenger <span><?php echo count($journeysPassenger); ?></span></p>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </h3>
-                <div class="allRide ridePassengers"></div>
+                <div class="allRide ridePassengers">
+                    <?php
+                    if (isset($journeysPassenger) and !empty($journeysPassenger)) :
+                        foreach ($journeysPassenger as $journeyPassenger) :
+                    ?>
+                            <div class="rideDriver">
+                                <?php
+                                if ($journeyPassenger['statusRide'] = 'in progress') :
+                                ?>
+                                    <p>Date : <span><?php echo htmlspecialchars($journeyPassenger['dateRide']) ?></span></p>
+                                    <div>
+                                        <div>
+                                            <p>Departure : <span><?php echo htmlspecialchars($journeyPassenger['startingPlace']) ?></span></p>
+                                            <p>at : <span><?php echo htmlspecialchars(substr($journeyPassenger['startingTime'], 0, -3)); ?></span></p>
+                                        </div>
+                                        <div>
+                                            <p>Arrival : <span><?php echo htmlspecialchars($journeyPassenger['endingPlace']) ?></span></p>
+                                            <p>at : <span><?php echo htmlspecialchars(substr($journeyPassenger['endingTime'], 0, -3)); ?></span></p>
+                                        </div>
+                                        <form action="../index.php?contr=ride&action=cancelReservation" method="POST">
+                                            <input type="hidden" name="rideId" value="<?php echo $journeyPassenger['reservation_id'] ?>">
+                                            <input type="submit" name="cancelRide" value="cancel reservation">
+                                        </form>
+                                    </div>
+                                <?php
+                                else :
+                                ?>
+                                    <p>No ride</p>
+                                <?php
+                                endif;
+                                ?>
+                            </div>
+                        <?php
+                        endforeach;
+                    else :
+                        ?>
+                        <div>
+                            <p>You have booked no ride as passenger</p>
+                        </div>
+                    <?php
+                    endif;
+                    ?>
+                </div>
             </div>
         </section>
         <section id="message" class="hideSection">
             <h2>
                 <ion-icon name="mail"></ion-icon>Message
             </h2>
+            <div class="message-container allRides">
+                <h3>
+                    <p>Message Recieved <span><?php echo count($messagesRecieved); ?></span></p>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                </h3>
+                <div class="message-single" >
+                    <?php 
+                        if(isset($messagesRecieved) AND !empty($messagesRecieved)):
+                            foreach($messagesRecieved as $mR):
+                                if(!$mR['messageDeletedDestinataire']):
+                                ?>
+                                <div class="message-unit">
+                                    <h4>Sent by: <span><?php echo htmlspecialchars($mR['name']) . ' ' . htmlspecialchars($mR['surname']);?></span></h4>
+                                    <h5><?php echo substr(htmlspecialchars($mR['dateSent']), 0, 10);?></h5>
+                                    <p><?php echo htmlspecialchars($mR['content']); ?></p>
+                                    <a href="<?php echo '../index.php?contr=user&action=deleteMessageD&id=' . htmlspecialchars($mR['message_id']); ?>">Delete message</a>
+                                    <a href="<?php echo '../index.php?contr=user&action=reportMessage&id=' . htmlspecialchars($mR['message_id']); ?>">Report this message</a>
+                                </div>
+                                <?php
+                                endif;
+                            endforeach;
+                        endif;
+                    ?>
+                </div>
+                <h3>
+                    <p>Message Sent <span><?php echo count($messagesSent); ?></span></p>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                </h3>
+                <div class="message-single" >
+                <?php 
+                        if(isset($messagesSent) AND !empty($messagesSent)):
+                            foreach($messagesSent as $mS):
+                                if(!$mS['messageDeletedSender']):
+                                ?>
+                                <div class="message-unit">
+                                    <h4>Sent to: <span><?php echo htmlspecialchars($mS['name']) . ' ' . htmlspecialchars($mS['surname']);?></span></h4>
+                                    <h5><?php echo substr(htmlspecialchars($mS['dateSent']), 0, 10);?></h5>
+                                    <p><?php echo htmlspecialchars($mS['content']); ?></p>
+                                    <a href="<?php echo '../index.php?contr=user&action=deleteMessageS&id=' . htmlspecialchars($mS['message_id']); ?>">Delete message</a>
+                                </div>
+                                <?php
+                                endif;
+                            endforeach;
+                        endif;
+                    ?>
+                </div>
+            </div>
         </section>
     </div>
 </div>
@@ -216,7 +307,9 @@
 <?php
 if (isset($msg) and !empty($msg)) :
 ?>
-    <div class="<?php if($msg[1] == 'error'): echo 'erreur'; else: echo 'sucess'; endif; ?>"><?php echo $msg[0]; ?></div>
+    <div class="<?php if ($msg[1] == 'error') : echo 'erreur';
+                else : echo 'sucess';
+                endif; ?>"><?php echo $msg[0]; ?></div>
 <?php
 endif;
 ?>

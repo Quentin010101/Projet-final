@@ -48,7 +48,6 @@ function init() {
     const titre = document.querySelectorAll('.allRides h3')
 
     titre.forEach(function(element){
-        console.log('g')
         element.addEventListener('click', function(){
             element.nextElementSibling.classList.toggle('allRideOpen')
             element.lastElementChild.classList.toggle('iconRotate')

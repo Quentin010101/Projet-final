@@ -1,0 +1,131 @@
+
+h2{
+    font-family: var(--font2);
+    color:var(--col-w-3);
+    background-color: var(--col-p-1);
+    padding: 10px 20px;
+    margin: 5px 5px 130px 5px;
+}
+.wrapper-form{
+    overflow: hidden;
+    min-height: calc(100vh - 66px);
+}
+form{
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+}
+.form-content{
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+    background-color: var(--col-p-5);
+    border-radius: 20px;
+    font-family: var(--font2);
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form input{
+    margin: 20px 0;
+}
+form .form-input{
+    z-index: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 40px;
+    align-items: center;
+}
+form input[type='date']{
+    width: 150px;
+}
+form .square{
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+form .square > div{
+    position: absolute;
+}
+form .square > div:nth-child(1){
+    width:90%;
+    aspect-ratio: 1/1;
+    background-color: var(--col-b-1-5);
+    border-radius: 20px;
+    transform: rotateZ(45deg);
+    left: -40%;
+    top: 0%;
+}
+form .square > div:nth-child(2){
+    width: 40%;
+    aspect-ratio: 1/2;
+    background-color: var(--col-p-3);
+    border-radius: 20px;
+    transform: rotateZ(45deg);
+    right: -20%;
+    top: 20%;
+}
+form .square > div:nth-child(3){
+    width: 50%;
+    aspect-ratio: 1/1;
+    background-color: var(--col-p-3);
+    border-radius: 20px;
+    transform: rotateZ(45deg);
+    right: 0%;
+    top: -30%; 
+}
+.square-out{
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.square-out > div{
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    height: 120%;
+    width: 120%;
+    background-color: var(--col-w-1-5);
+    border-radius: 20px;
+} 
+.square-out > div >div{
+    z-index: -1;
+}
+.square-out > div >div:nth-child(1){
+    position: absolute;
+    top: -11%;
+    left: -60.5%;
+    height: 150%;
+    width: 100%;
+    border-radius: 20px;
+    transform: rotateZ(45deg);
+    background-color: var(--col-b-8);
+}
+.square-out > div >div:nth-child(2){
+    position: absolute;
+    top: -35%;
+    left: 45%;
+    height: 55%;
+    width: 80%;
+    border-radius: 20px;
+    transform: rotateZ(-45deg);
+    background-color: var(--col-p-8);
+}
+.square-out > div >div:nth-child(3){
+    position: absolute;
+    top: 37%;
+    left: 71%;
+    height: 120%;
+    width: 120%;
+    border-radius: 20px;
+    transform: rotateZ(45deg);
+    background-color: var(--col-p-8);
+}

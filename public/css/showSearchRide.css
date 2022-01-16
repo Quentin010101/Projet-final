@@ -5,6 +5,8 @@
 }
 
 h2{
+    font-family: var(--font2);
+    color:var(--col-w-3);
     background-color: var(--col-p-1);
     padding: 10px 20px;
     margin: 5px 5px 30px 5px;
@@ -62,6 +64,9 @@ h2{
     padding: 20px 20px 50px 15px;
     background-color: var(--col-p-1);
     border-radius: 10px;
+}
+.card-content h4{
+    color: var(--col-w-3);
 }
 .avatar-container{
     position: absolute;

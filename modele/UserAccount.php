@@ -28,7 +28,7 @@ class User extends \Database
 
     public function findPersonnalInformation($person_id){
 
-        $query = 'SELECT name, surname, email, pseudo, phoneNumber, date FROM person WHERE person_id = ?';
+        $query = 'SELECT person_id, name, surname, email, pseudo, phoneNumber, date FROM person WHERE person_id = ?';
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($person_id));
         $request = $stmt->fetch();

@@ -8,6 +8,7 @@ require_once('./controler/journey.contr.php');
 require_once('./modele/utility/Application.php');
 require_once('./modele/utility/Redirect.php');
 require_once('./modele/utility/Render.php');
+require_once('./modele/Reservation.php');
 
 
 Application::process();
